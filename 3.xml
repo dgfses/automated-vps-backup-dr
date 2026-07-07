@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="draw.io" type="device">
+  <diagram name="System Architecture" id="architecture">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title-arch" value="&lt;b&gt;System Architecture — Cloud Backup &amp; Disaster Recovery&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="300" y="15" width="500" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="server-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#333333;strokeWidth=2;dashed=0;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="60" width="560" height="700" as="geometry"/>
+        </mxCell>
+        <mxCell id="server-label" value="&lt;b&gt;VPS / Linux Server&lt;/b&gt;&lt;br&gt;Ubuntu 20.04+ | Debian 11+" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="65" y="65" width="230" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="arch-cron" value="&lt;b&gt;Cronjob&lt;/b&gt;&lt;br&gt;02:00 AM daily&lt;br&gt;+ flock lock" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="150" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="arch-backup" value="&lt;b&gt;backup.sh&lt;/b&gt;&lt;br&gt;Main Backup Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="120" width="160" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="arch-restore" value="&lt;b&gt;restore.sh&lt;/b&gt;&lt;br&gt;DR Restore Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="210" width="160" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="arch-setup" value="&lt;b&gt;setup.sh&lt;/b&gt;&lt;br&gt;Deployment Wizard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="210" width="150" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="comp-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;strokeWidth=1;dashed=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="70" y="310" width="520" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="comp-label" value="&lt;b&gt;Server Components&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="80" y="315" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="arch-mysql" value="&lt;b&gt;MySQL /&lt;br&gt;MariaDB&lt;/b&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="95" y="350" width="100" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="arch-web" value="&lt;b&gt;Apache / Nginx&lt;/b&gt;&lt;br&gt;/var/www/html" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="230" y="355" width="140" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="arch-rclone" value="&lt;b&gt;Rclone&lt;/b&gt;&lt;br&gt;Cloud Sync" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="405" y="355" width="110" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="arch-mycnf" value="&lt;b&gt;.my.cnf&lt;/b&gt;&lt;br&gt;chmod 600" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="95" y="440" width="100" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="arch-logrotate" value="&lt;b&gt;Logrotate&lt;/b&gt;&lt;br&gt;monthly / 6 rotasi" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="230" y="440" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="arch-temp" value="&lt;b&gt;/root/backup_temp&lt;/b&gt;&lt;br&gt;Local storage" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="405" y="440" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="arch-log" value="&lt;b&gt;/var/log/backup.log&lt;/b&gt;&lt;br&gt;Riwayat eksekusi (stdout + stderr)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="555" width="280" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="arch-retention" value="&lt;b&gt;Retention Policy&lt;/b&gt;&lt;br&gt;find -mtime +7 -delete&lt;br&gt;rclone delete --min-age 7d" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="620" width="250" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="arch-lock" value="&lt;b&gt;/var/lock/&lt;br&gt;auto_backup.lock&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="400" y="560" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="cloud-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#0066CC;strokeWidth=2;dashed=0;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="100" width="280" height="310" as="geometry"/>
+        </mxCell>
+        <mxCell id="cloud-label" value="&lt;b&gt;Cloud / Remote Storage&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=13;fontColor=#0066CC;" vertex="1" parent="1">
+          <mxGeometry x="740" y="105" width="180" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="cloud-gdrive" value="&lt;b&gt;Google Drive&lt;/b&gt;&lt;br&gt;15 GB Free" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="150" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="cloud-s3" value="&lt;b&gt;AWS S3&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="220" width="130" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="cloud-r2" value="&lt;b&gt;Cloudflare R2&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="280" width="130" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="cloud-folder" value="&lt;b&gt;Server_Production_Backups/&lt;/b&gt;&lt;br&gt;backup-db-2026-07-05.tar.gz&lt;br&gt;backup-db-2026-07-04.tar.gz&lt;br&gt;backup-db-2026-07-03.tar.gz" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="740" y="340" width="230" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="telegram-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#26A5E4;strokeWidth=2;dashed=0;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="480" width="280" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="telegram-label" value="&lt;b&gt;Telegram Alerting&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=13;fontColor=#26A5E4;" vertex="1" parent="1">
+          <mxGeometry x="740" y="485" width="150" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="tele-bot" value="&lt;b&gt;Bot API&lt;/b&gt;&lt;br&gt;POST /sendMessage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#26A5E4;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="520" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="tele-report" value="SUCCESS / FAILED&lt;br&gt;File, Ukuran, Durasi&lt;br&gt;Sisa disk VPS" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="740" y="575" width="150" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin-icon" value="&lt;b&gt;SysAdmin&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="790" y="690" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="a1" value="trigger" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="arch-cron" target="arch-backup" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a2" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="arch-backup" target="arch-rclone" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a3" value="rclone copy" style="endArrow=classic;html=1;strokeColor=#0066CC;strokeWidth=2;fontSize=10;fontColor=#0066CC;" edge="1" source="arch-rclone" target="cloud-gdrive" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a4" value="mysqldump" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="arch-backup" target="arch-mysql" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a5" value="curl POST" style="endArrow=classic;html=1;strokeColor=#26A5E4;strokeWidth=2;fontSize=10;fontColor=#26A5E4;" edge="1" source="arch-backup" target="tele-bot" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a6" value="bash restore.sh" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=2;fontSize=10;fontColor=#CC0000;" edge="1" source="admin-icon" target="arch-restore" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a7" value="rclone copy (download)" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=1.5;fontSize=10;fontColor=#CC0000;dashed=1;" edge="1" source="arch-restore" target="cloud-gdrive" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a8" value="mysql import" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=1.5;fontSize=10;fontColor=#CC0000;dashed=1;" edge="1" source="arch-restore" target="arch-mysql" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a9" value="tar extract" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=1.5;fontSize=10;fontColor=#CC0000;dashed=1;" edge="1" source="arch-restore" target="arch-web" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

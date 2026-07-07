@@ -1,0 +1,699 @@
+<mxfile host="draw.io" modified="2026-07-06T05:42:00.000Z" agent="draw.io" type="device" version="24.0.0">
+
+  <!-- ============================================================ -->
+  <!-- PAGE 1: DFD LEVEL 0 — Context Diagram                       -->
+  <!-- ============================================================ -->
+  <diagram name="DFD Level 0 - Context" id="dfd-level-0">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title-0" value="&lt;b&gt;DFD Level 0 — Context Diagram&lt;/b&gt;&lt;br&gt;Cloud Backup &amp; Disaster Recovery System" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="340" y="10" width="420" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== MAIN PROCESS (Center) ======== -->
+        <mxCell id="p0" value="&lt;b&gt;0&lt;/b&gt;&lt;br&gt;&lt;br&gt;Cloud Backup &amp;&lt;br&gt;Disaster Recovery&lt;br&gt;System" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=13;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="380" y="260" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== EXTERNAL ENTITIES ======== -->
+        <!-- E1: Linux Cron Scheduler -->
+        <mxCell id="e1" value="&lt;b&gt;Linux Cron&lt;br&gt;Scheduler&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=12;fontColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="80" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- E2: MySQL / MariaDB -->
+        <mxCell id="e2" value="&lt;b&gt;MySQL /&lt;br&gt;MariaDB&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=12;fontColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="200" width="150" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- E3: Web Server Files -->
+        <mxCell id="e3" value="&lt;b&gt;Web Server&lt;br&gt;/var/www/html&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=12;fontColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="400" width="150" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- E4: Cloud Storage -->
+        <mxCell id="e4" value="&lt;b&gt;Cloud Storage&lt;br&gt;(GDrive / S3 / R2)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=12;fontColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="810" y="200" width="170" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- E5: Telegram Bot API -->
+        <mxCell id="e5" value="&lt;b&gt;Telegram&lt;br&gt;Bot API&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=12;fontColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="810" y="400" width="170" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- E6: SysAdmin -->
+        <mxCell id="e6" value="&lt;b&gt;System&lt;br&gt;Administrator&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=12;fontColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="560" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- E7: Log File -->
+        <mxCell id="e7" value="&lt;b&gt;Log File&lt;br&gt;/var/log/backup.log&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=12;fontColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="560" width="170" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== DATA FLOWS (Arrows) ======== -->
+        <!-- Cron -> System -->
+        <mxCell id="f1" value="Trigger jadwal&lt;br&gt;(02:00 AM + flock)" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontColor=#333333;entryX=0.5;entryY=0;exitX=0.5;exitY=1;" edge="1" source="e1" target="p0" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- System -> MySQL (query) -->
+        <mxCell id="f2a" value="mysqldump&lt;br&gt;query" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontColor=#333333;exitX=0;exitY=0.3;entryX=1;entryY=0.5;" edge="1" source="p0" target="e2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- MySQL -> System (data) -->
+        <mxCell id="f2b" value="SQL dump&lt;br&gt;(.sql)" style="endArrow=classic;html=1;strokeColor=#0066CC;strokeWidth=1.5;fontSize=10;fontColor=#0066CC;exitX=1;exitY=0.8;entryX=0.1;entryY=0.35;dashed=1;" edge="1" source="e2" target="p0" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Web Server -> System -->
+        <mxCell id="f3" value="Source code&lt;br&gt;files" style="endArrow=classic;html=1;strokeColor=#0066CC;strokeWidth=1.5;fontSize=10;fontColor=#0066CC;exitX=1;exitY=0.3;entryX=0.1;entryY=0.7;dashed=1;" edge="1" source="e3" target="p0" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- System -> Cloud (upload) -->
+        <mxCell id="f4a" value="Upload arsip&lt;br&gt;(.tar.gz)" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontColor=#333333;exitX=1;exitY=0.3;entryX=0;entryY=0.5;" edge="1" source="p0" target="e4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Cloud -> System (download/restore) -->
+        <mxCell id="f4b" value="Download backup&lt;br&gt;(restore)" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=1.5;fontSize=10;fontColor=#CC0000;exitX=0;exitY=0.8;entryX=0.9;entryY=0.35;dashed=1;" edge="1" source="e4" target="p0" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- System -> Telegram -->
+        <mxCell id="f5" value="Status report&lt;br&gt;(SUCCESS/FAILED)" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontColor=#333333;exitX=1;exitY=0.7;entryX=0;entryY=0.5;" edge="1" source="p0" target="e5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- SysAdmin -> System (manual trigger) -->
+        <mxCell id="f6a" value="Manual trigger&lt;br&gt;/ konfigurasi" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontColor=#333333;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" source="e6" target="p0" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- System -> Log -->
+        <mxCell id="f7" value="Riwayat eksekusi&lt;br&gt;(stdout + stderr)" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontColor=#333333;exitX=0;exitY=0.9;entryX=1;entryY=0.3;" edge="1" source="p0" target="e7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- System -> Web Server (restore) -->
+        <mxCell id="f8" value="Restore files&lt;br&gt;(tar extract)" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=1.5;fontSize=10;fontColor=#CC0000;exitX=0.05;exitY=0.6;entryX=1;entryY=0.7;dashed=1;" edge="1" source="p0" target="e3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="leg1" value="&lt;b&gt;Legenda:&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="830" y="530" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg2" value="― Alur data backup" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="830" y="555" width="130" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg3" value="--- Alur data response" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#0066CC;" vertex="1" parent="1">
+          <mxGeometry x="830" y="575" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg4" value="--- Alur restore/DR" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#CC0000;" vertex="1" parent="1">
+          <mxGeometry x="830" y="595" width="130" height="25" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <!-- ============================================================ -->
+  <!-- PAGE 2: DFD LEVEL 1 — Detailed Process Diagram               -->
+  <!-- ============================================================ -->
+  <diagram name="DFD Level 1 - Detail" id="dfd-level-1">
+    <mxGraphModel dx="1622" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title-1" value="&lt;b&gt;DFD Level 1 — Detailed Data Flow Diagram&lt;/b&gt;&lt;br&gt;Cloud Backup &amp; Disaster Recovery System" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="380" y="10" width="460" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== EXTERNAL ENTITIES ======== -->
+        <mxCell id="ext-cron" value="&lt;b&gt;Linux Cron&lt;br&gt;Scheduler&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="80" width="130" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext-mysql" value="&lt;b&gt;MySQL /&lt;br&gt;MariaDB&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="220" width="130" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext-web" value="&lt;b&gt;Web Server&lt;br&gt;/var/www/html&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="370" width="130" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext-cloud" value="&lt;b&gt;Cloud Storage&lt;br&gt;(GDrive/S3/R2)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="220" width="150" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext-telegram" value="&lt;b&gt;Telegram&lt;br&gt;Bot API&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="530" width="150" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext-admin" value="&lt;b&gt;System&lt;br&gt;Administrator&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="750" width="130" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== PROCESSES ======== -->
+        <!-- P1: Pre-Flight Check -->
+        <mxCell id="p1" value="&lt;b&gt;1.0&lt;/b&gt;&lt;br&gt;Pre-Flight&lt;br&gt;Check" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="75" width="140" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- P2: Dump Database -->
+        <mxCell id="p2" value="&lt;b&gt;2.0&lt;/b&gt;&lt;br&gt;Dump&lt;br&gt;Database" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="220" width="140" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- P3: Compress & Archive -->
+        <mxCell id="p3" value="&lt;b&gt;3.0&lt;/b&gt;&lt;br&gt;Compress &amp;&lt;br&gt;Archive" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="340" width="140" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- P4: Upload to Cloud -->
+        <mxCell id="p4" value="&lt;b&gt;4.0&lt;/b&gt;&lt;br&gt;Upload to&lt;br&gt;Cloud (Rclone)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="220" width="150" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- P5: Retention Policy -->
+        <mxCell id="p5" value="&lt;b&gt;5.0&lt;/b&gt;&lt;br&gt;Retention&lt;br&gt;Policy Engine" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="400" width="150" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- P6: Send Notification -->
+        <mxCell id="p6" value="&lt;b&gt;6.0&lt;/b&gt;&lt;br&gt;Send&lt;br&gt;Notification" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="540" width="150" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- P7: Restore (DR) -->
+        <mxCell id="p7" value="&lt;b&gt;7.0&lt;/b&gt;&lt;br&gt;Disaster&lt;br&gt;Recovery Restore" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="450" y="720" width="170" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== DATA STORES ======== -->
+        <mxCell id="d1" value="  &lt;b&gt;D1&lt;/b&gt;  Local Backup Storage (/root/backup_temp)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="460" y="190" width="280" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d2" value="  &lt;b&gt;D2&lt;/b&gt;  Config Files (.my.cnf / backup.sh vars)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="460" y="130" width="280" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d3" value="  &lt;b&gt;D3&lt;/b&gt;  Log File (/var/log/backup.log)" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="460" y="560" width="260" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== DATA FLOWS ======== -->
+        <!-- Cron -> P1 -->
+        <mxCell id="fl-1" value="Trigger (02:00 AM)" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="ext-cron" target="p1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- P1 -> D2 (read config) -->
+        <mxCell id="fl-2" value="Baca konfigurasi" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="p1" target="d2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- P1 -> P2 (proceed) -->
+        <mxCell id="fl-3" value="Checks passed" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="p1" target="p2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ext-mysql -> P2 -->
+        <mxCell id="fl-4" value="SQL dump data" style="endArrow=classic;html=1;strokeColor=#0066CC;strokeWidth=1.5;fontSize=10;fontColor=#0066CC;" edge="1" source="ext-mysql" target="p2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- P2 -> P3 -->
+        <mxCell id="fl-5" value="File .sql" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="p2" target="p3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ext-web -> P3 -->
+        <mxCell id="fl-6" value="Source files" style="endArrow=classic;html=1;strokeColor=#0066CC;strokeWidth=1.5;fontSize=10;fontColor=#0066CC;" edge="1" source="ext-web" target="p3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- P3 -> D1 (save .tar.gz) -->
+        <mxCell id="fl-7" value="Simpan .tar.gz" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="p3" target="d1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- D1 -> P4 (read for upload) -->
+        <mxCell id="fl-8" value="Baca arsip" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="d1" target="p4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- P4 -> ext-cloud (upload) -->
+        <mxCell id="fl-9" value="rclone copy&lt;br&gt;(.tar.gz)" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="p4" target="ext-cloud" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- P4 -> P5 (trigger retention) -->
+        <mxCell id="fl-10" value="Upload selesai" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="p4" target="p5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- P5 -> D1 (delete old local) -->
+        <mxCell id="fl-11" value="Hapus file &gt; 7 hari&lt;br&gt;(lokal)" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=1.5;fontSize=10;fontColor=#CC0000;dashed=1;exitX=0;exitY=0.3;" edge="1" source="p5" target="d1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- P5 -> ext-cloud (delete old remote) -->
+        <mxCell id="fl-12" value="Hapus file &gt; 7 hari&lt;br&gt;(remote)" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=1.5;fontSize=10;fontColor=#CC0000;dashed=1;" edge="1" source="p5" target="ext-cloud" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- P5 -> P6 (trigger notification) -->
+        <mxCell id="fl-13" value="Metrik lengkap" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="p5" target="p6" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- P6 -> ext-telegram -->
+        <mxCell id="fl-14" value="POST /sendMessage&lt;br&gt;(status report)" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="p6" target="ext-telegram" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- P6 -> D3 (write log) -->
+        <mxCell id="fl-15" value="Tulis log" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="p6" target="d3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- === RESTORE FLOW === -->
+        <!-- Admin -> P7 -->
+        <mxCell id="fl-20" value="Jalankan restore.sh" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=2;fontSize=10;fontColor=#CC0000;" edge="1" source="ext-admin" target="p7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ext-cloud -> P7 -->
+        <mxCell id="fl-21" value="Download backup&lt;br&gt;terbaru" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=1.5;fontSize=10;fontColor=#CC0000;dashed=1;exitX=0.3;exitY=1;" edge="1" source="ext-cloud" target="p7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- P7 -> ext-web (restore files) -->
+        <mxCell id="fl-22" value="Extract ke&lt;br&gt;/var/www/html" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=1.5;fontSize=10;fontColor=#CC0000;" edge="1" source="p7" target="ext-web" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- P7 -> ext-mysql (import SQL) -->
+        <mxCell id="fl-23" value="Import .sql" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=1.5;fontSize=10;fontColor=#CC0000;" edge="1" source="p7" target="ext-mysql" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Separator line -->
+        <mxCell id="sep1" value="" style="endArrow=none;html=1;strokeColor=#999999;strokeWidth=1;dashed=1;dashPattern=8 8;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="20" y="680" as="sourcePoint"/>
+            <mxPoint x="1200" y="680" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sep-label" value="DISASTER RECOVERY FLOW (restore.sh)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontColor=#CC0000;fontStyle=3;" vertex="1" parent="1">
+          <mxGeometry x="440" y="660" width="300" height="25" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <!-- ============================================================ -->
+  <!-- PAGE 3: SYSTEM ARCHITECTURE DIAGRAM                          -->
+  <!-- ============================================================ -->
+  <diagram name="System Architecture" id="architecture">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title-arch" value="&lt;b&gt;System Architecture — Cloud Backup &amp; Disaster Recovery&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="300" y="15" width="500" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== VPS / SERVER BOX ======== -->
+        <mxCell id="server-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#333333;strokeWidth=2;dashed=0;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="60" width="560" height="700" as="geometry"/>
+        </mxCell>
+        <mxCell id="server-label" value="&lt;b&gt;VPS / Linux Server&lt;/b&gt;&lt;br&gt;Ubuntu 20.04+ | Debian 11+" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="65" y="65" width="230" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Cron + flock -->
+        <mxCell id="arch-cron" value="&lt;b&gt;Cronjob&lt;/b&gt;&lt;br&gt;02:00 AM daily&lt;br&gt;+ flock lock" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="150" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- backup.sh -->
+        <mxCell id="arch-backup" value="&lt;b&gt;backup.sh&lt;/b&gt;&lt;br&gt;Main Backup Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="120" width="160" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- restore.sh -->
+        <mxCell id="arch-restore" value="&lt;b&gt;restore.sh&lt;/b&gt;&lt;br&gt;DR Restore Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="210" width="160" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- setup.sh -->
+        <mxCell id="arch-setup" value="&lt;b&gt;setup.sh&lt;/b&gt;&lt;br&gt;Deployment Wizard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="210" width="150" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- Components sub-box -->
+        <mxCell id="comp-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;strokeWidth=1;dashed=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="70" y="310" width="520" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="comp-label" value="&lt;b&gt;Server Components&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="80" y="315" width="140" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- MySQL -->
+        <mxCell id="arch-mysql" value="&lt;b&gt;MySQL /&lt;br&gt;MariaDB&lt;/b&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="95" y="350" width="100" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Apache/Nginx -->
+        <mxCell id="arch-web" value="&lt;b&gt;Apache / Nginx&lt;/b&gt;&lt;br&gt;/var/www/html" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="230" y="355" width="140" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Rclone -->
+        <mxCell id="arch-rclone" value="&lt;b&gt;Rclone&lt;/b&gt;&lt;br&gt;Cloud Sync" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="405" y="355" width="110" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- .my.cnf -->
+        <mxCell id="arch-mycnf" value="&lt;b&gt;.my.cnf&lt;/b&gt;&lt;br&gt;chmod 600" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="95" y="440" width="100" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Logrotate -->
+        <mxCell id="arch-logrotate" value="&lt;b&gt;Logrotate&lt;/b&gt;&lt;br&gt;monthly / 6 rotasi" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="230" y="440" width="140" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Backup temp dir -->
+        <mxCell id="arch-temp" value="&lt;b&gt;/root/backup_temp&lt;/b&gt;&lt;br&gt;Local storage" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="405" y="440" width="140" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Log file area -->
+        <mxCell id="arch-log" value="&lt;b&gt;/var/log/backup.log&lt;/b&gt;&lt;br&gt;Riwayat eksekusi (stdout + stderr)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="555" width="280" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Retention Policy -->
+        <mxCell id="arch-retention" value="&lt;b&gt;Retention Policy&lt;/b&gt;&lt;br&gt;find -mtime +7 -delete&lt;br&gt;rclone delete --min-age 7d" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="620" width="250" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Lock file -->
+        <mxCell id="arch-lock" value="&lt;b&gt;/var/lock/&lt;br&gt;auto_backup.lock&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="400" y="560" width="140" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== CLOUD STORAGE ======== -->
+        <mxCell id="cloud-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#0066CC;strokeWidth=2;dashed=0;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="100" width="280" height="310" as="geometry"/>
+        </mxCell>
+        <mxCell id="cloud-label" value="&lt;b&gt;Cloud / Remote Storage&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=13;fontColor=#0066CC;" vertex="1" parent="1">
+          <mxGeometry x="740" y="105" width="180" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cloud-gdrive" value="&lt;b&gt;Google Drive&lt;/b&gt;&lt;br&gt;15 GB Free" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="150" width="130" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cloud-s3" value="&lt;b&gt;AWS S3&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="220" width="130" height="45" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cloud-r2" value="&lt;b&gt;Cloudflare R2&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="280" width="130" height="45" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cloud-folder" value="&lt;b&gt;Server_Production_Backups/&lt;/b&gt;&lt;br&gt;backup-db-2026-07-05.tar.gz&lt;br&gt;backup-db-2026-07-04.tar.gz&lt;br&gt;backup-db-2026-07-03.tar.gz&lt;br&gt;..." style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="740" y="340" width="230" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== TELEGRAM ======== -->
+        <mxCell id="telegram-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#26A5E4;strokeWidth=2;dashed=0;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="480" width="280" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="telegram-label" value="&lt;b&gt;Telegram Alerting&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=13;fontColor=#26A5E4;" vertex="1" parent="1">
+          <mxGeometry x="740" y="485" width="150" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="tele-bot" value="&lt;b&gt;Bot API&lt;/b&gt;&lt;br&gt;POST /sendMessage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#26A5E4;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="520" width="130" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="tele-report" value="SUCCESS / FAILED&lt;br&gt;File, Ukuran, Durasi&lt;br&gt;Sisa disk VPS" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="740" y="575" width="150" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== SYSADMIN ======== -->
+        <mxCell id="admin-icon" value="&lt;b&gt;SysAdmin&lt;/b&gt;" style="shape=mxgraph.basic.smiley;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=11;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="810" y="680" width="80" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== ARROWS (Architecture) ======== -->
+        <!-- Cron -> backup.sh -->
+        <mxCell id="a1" value="trigger" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="arch-cron" target="arch-backup" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- backup.sh -> rclone -->
+        <mxCell id="a2" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="arch-backup" target="arch-rclone" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- rclone -> Cloud -->
+        <mxCell id="a3" value="rclone copy" style="endArrow=classic;html=1;strokeColor=#0066CC;strokeWidth=2;fontSize=10;fontColor=#0066CC;" edge="1" source="arch-rclone" target="cloud-gdrive" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- backup.sh -> mysql -->
+        <mxCell id="a4" value="mysqldump" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;" edge="1" source="arch-backup" target="arch-mysql" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- backup.sh -> telegram -->
+        <mxCell id="a5" value="curl POST" style="endArrow=classic;html=1;strokeColor=#26A5E4;strokeWidth=2;fontSize=10;fontColor=#26A5E4;" edge="1" source="arch-backup" target="tele-bot" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Admin -> restore.sh -->
+        <mxCell id="a6" value="bash restore.sh" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=2;fontSize=10;fontColor=#CC0000;" edge="1" source="admin-icon" target="arch-restore" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- restore.sh -> Cloud (download) -->
+        <mxCell id="a7" value="rclone copy&lt;br&gt;(download)" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=1.5;fontSize=10;fontColor=#CC0000;dashed=1;" edge="1" source="arch-restore" target="cloud-gdrive" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- restore.sh -> mysql -->
+        <mxCell id="a8" value="mysql import" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=1.5;fontSize=10;fontColor=#CC0000;dashed=1;" edge="1" source="arch-restore" target="arch-mysql" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- restore.sh -> web -->
+        <mxCell id="a9" value="tar extract" style="endArrow=classic;html=1;strokeColor=#CC0000;strokeWidth=1.5;fontSize=10;fontColor=#CC0000;dashed=1;" edge="1" source="arch-restore" target="arch-web" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <!-- ============================================================ -->
+  <!-- PAGE 4: ERD — Entity Relationship Diagram                    -->
+  <!-- ============================================================ -->
+  <diagram name="ERD - Entity Relationship" id="erd">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title-erd" value="&lt;b&gt;Entity Relationship Diagram (ERD) — Conceptual Model&lt;/b&gt;&lt;br&gt;Cloud Backup &amp; Disaster Recovery System" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="330" y="10" width="480" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== ENTITIES ======== -->
+
+        <!-- E: Server -->
+        <mxCell id="erd-server" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;SERVER&lt;/b&gt;&lt;u&gt;server_id&lt;/u&gt;&lt;br&gt;hostname&lt;br&gt;ip_address&lt;br&gt;os_version&lt;br&gt;disk_capacity&lt;br&gt;disk_usage" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="80" y="90" width="160" height="155" as="geometry"/>
+        </mxCell>
+
+        <!-- E: Database -->
+        <mxCell id="erd-db" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;DATABASE&lt;/b&gt;&lt;u&gt;db_name&lt;/u&gt;&lt;br&gt;db_type (MySQL/MariaDB)&lt;br&gt;host&lt;br&gt;port&lt;br&gt;charset" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="80" y="330" width="190" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- E: WebDirectory -->
+        <mxCell id="erd-webdir" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;WEB_DIRECTORY&lt;/b&gt;&lt;u&gt;dir_path&lt;/u&gt;&lt;br&gt;owner&lt;br&gt;group&lt;br&gt;permissions&lt;br&gt;total_size" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="80" y="550" width="170" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- E: BackupJob -->
+        <mxCell id="erd-job" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;BACKUP_JOB&lt;/b&gt;&lt;u&gt;job_id&lt;/u&gt;&lt;br&gt;triggered_by&lt;br&gt;start_time&lt;br&gt;end_time&lt;br&gt;duration_seconds&lt;br&gt;status (SUCCESS/FAILED)&lt;br&gt;error_message&lt;br&gt;retention_applied" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="440" y="80" width="210" height="195" as="geometry"/>
+        </mxCell>
+
+        <!-- E: BackupFile -->
+        <mxCell id="erd-file" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;BACKUP_FILE&lt;/b&gt;&lt;u&gt;filename&lt;/u&gt;&lt;br&gt;format (.tar.gz)&lt;br&gt;file_size&lt;br&gt;created_at&lt;br&gt;local_path&lt;br&gt;remote_path&lt;br&gt;is_uploaded&lt;br&gt;expires_at" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="440" y="370" width="180" height="195" as="geometry"/>
+        </mxCell>
+
+        <!-- E: CloudRemote -->
+        <mxCell id="erd-cloud" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;CLOUD_REMOTE&lt;/b&gt;&lt;u&gt;remote_name&lt;/u&gt;&lt;br&gt;provider (GDrive/S3/R2)&lt;br&gt;target_folder&lt;br&gt;auth_type (OAuth/Key)&lt;br&gt;max_transfers" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="810" y="370" width="200" height="150" as="geometry"/>
+        </mxCell>
+
+        <!-- E: Notification -->
+        <mxCell id="erd-notif" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;NOTIFICATION&lt;/b&gt;&lt;u&gt;notif_id&lt;/u&gt;&lt;br&gt;channel (Telegram)&lt;br&gt;bot_token&lt;br&gt;chat_id&lt;br&gt;timestamp&lt;br&gt;status_code&lt;br&gt;message_content" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="810" y="90" width="190" height="175" as="geometry"/>
+        </mxCell>
+
+        <!-- E: CronSchedule -->
+        <mxCell id="erd-cron" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;CRON_SCHEDULE&lt;/b&gt;&lt;u&gt;schedule_id&lt;/u&gt;&lt;br&gt;cron_expression&lt;br&gt;script_path&lt;br&gt;lock_file_path&lt;br&gt;log_file_path&lt;br&gt;is_active" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="440" y="640" width="180" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- E: RetentionPolicy -->
+        <mxCell id="erd-retention" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;RETENTION_POLICY&lt;/b&gt;&lt;u&gt;policy_id&lt;/u&gt;&lt;br&gt;max_age_days&lt;br&gt;scope (local/remote/both)&lt;br&gt;last_executed&lt;br&gt;files_deleted_count" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="810" y="590" width="210" height="145" as="geometry"/>
+        </mxCell>
+
+        <!-- E: Credentials -->
+        <mxCell id="erd-cred" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;CREDENTIALS&lt;/b&gt;&lt;u&gt;cred_id&lt;/u&gt;&lt;br&gt;file_path (.my.cnf)&lt;br&gt;permissions (600)&lt;br&gt;db_user&lt;br&gt;db_host&lt;br&gt;owner (root)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="80" y="750" width="180" height="155" as="geometry"/>
+        </mxCell>
+
+        <!-- ======== RELATIONSHIPS (Diamonds) ======== -->
+
+        <!-- Server HAS Database -->
+        <mxCell id="r1" value="HAS" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="125" y="268" width="70" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1a" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="erd-server" target="r1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1b" value="N" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="r1" target="erd-db" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Server HAS WebDirectory -->
+        <mxCell id="r2" value="HOSTS" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="125" y="490" width="70" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2a" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="erd-db" target="r2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2b" value="N" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="r2" target="erd-webdir" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- BackupJob CREATES BackupFile -->
+        <mxCell id="r3" value="CREATES" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="495" y="295" width="80" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3a" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="erd-job" target="r3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3b" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="r3" target="erd-file" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- BackupJob READS Database (horizontal) -->
+        <mxCell id="r4" value="READS" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="305" y="320" width="70" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4a" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="erd-job" target="r4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4b" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="r4" target="erd-db" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- BackupFile UPLOADED_TO CloudRemote -->
+        <mxCell id="r5" value="UPLOADED&lt;br&gt;TO" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="680" y="415" width="85" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5a" value="N" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="erd-file" target="r5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5b" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="r5" target="erd-cloud" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- BackupJob SENDS Notification -->
+        <mxCell id="r6" value="SENDS" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="140" width="70" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6a" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="erd-job" target="r6" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6b" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="r6" target="erd-notif" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- CronSchedule TRIGGERS BackupJob -->
+        <mxCell id="r7" value="TRIGGERS" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="480" y="590" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="r7a" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="erd-cron" target="r7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r7b" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="r7" target="erd-job" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- RetentionPolicy APPLIED_TO BackupFile -->
+        <mxCell id="r8" value="APPLIED&lt;br&gt;TO" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="690" y="545" width="80" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r8a" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="erd-retention" target="r8" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r8b" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="r8" target="erd-file" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Credentials USED_BY BackupJob -->
+        <mxCell id="r9" value="USED&lt;br&gt;BY" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="305" y="720" width="70" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r9a" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="erd-cred" target="r9" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r9b" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="r9" target="erd-job" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Server RUN BackupJob -->
+        <mxCell id="r10" value="RUNS" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="295" y="130" width="70" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r10a" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="erd-server" target="r10" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r10b" value="N" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="r10" target="erd-job" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+</mxfile>

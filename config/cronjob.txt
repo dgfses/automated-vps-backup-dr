@@ -1,0 +1,34 @@
+# ==============================================================================
+# CRONJOB CONFIGURATION — Cloud Backup & DR System
+# ==============================================================================
+# 
+# Tambahkan entry di bawah ini ke crontab dengan perintah:
+#   crontab -e
+#
+# Atau gunakan skrip setup.sh untuk konfigurasi otomatis.
+# ==============================================================================
+
+# ┌───────────── menit (0-59)
+# │ ┌─────────── jam (0-23)
+# │ │ ┌───────── hari dalam bulan (1-31)
+# │ │ │ ┌─────── bulan (1-12)
+# │ │ │ │ ┌───── hari dalam minggu (0-7, 0 dan 7 = Minggu)
+# │ │ │ │ │
+# * * * * *
+
+# === BACKUP HARIAN (02:00 AM) DENGAN PROTEKSI FLOCK ===
+# 
+# Penjelasan:
+#   - Berjalan setiap hari pukul 02:00 AM (saat trafik website sepi)
+#   - flock -n : Non-blocking lock. Jika backup sebelumnya masih berjalan,
+#                eksekusi baru akan langsung dibatalkan (graceful exit)
+#   - /var/lock/auto_backup.lock : File kunci untuk mencegah eksekusi ganda
+#   - >> /var/log/backup.log 2>&1 : Semua output (stdout + stderr) dicatat ke log
+#
+0 2 * * * /usr/bin/flock -n /var/lock/auto_backup.lock /bin/bash /root/scripts/backup.sh >> /var/log/backup.log 2>&1
+
+# === OPSIONAL: BACKUP TAMBAHAN (Setiap 6 jam untuk server high-traffic) ===
+# 0 */6 * * * /usr/bin/flock -n /var/lock/auto_backup.lock /bin/bash /root/scripts/backup.sh >> /var/log/backup.log 2>&1
+
+# === OPSIONAL: BACKUP MINGGUAN PENUH (Minggu 03:00 AM) ===
+# 0 3 * * 0 /usr/bin/flock -n /var/lock/auto_backup_weekly.lock /bin/bash /root/scripts/backup.sh >> /var/log/backup_weekly.log 2>&1

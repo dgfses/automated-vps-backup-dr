@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="draw.io" type="device">
+  <diagram name="ERD - Entity Relationship" id="erd">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title-erd" value="&lt;b&gt;Entity Relationship Diagram (ERD) — Conceptual Model&lt;/b&gt;&lt;br&gt;Cloud Backup &amp; Disaster Recovery System" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="330" y="10" width="480" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="erd-server" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;SERVER&lt;/b&gt;&lt;u&gt;server_id&lt;/u&gt;&lt;br&gt;hostname&lt;br&gt;ip_address&lt;br&gt;os_version&lt;br&gt;disk_capacity&lt;br&gt;disk_usage" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="80" y="90" width="160" height="155" as="geometry"/>
+        </mxCell>
+        <mxCell id="erd-db" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;DATABASE&lt;/b&gt;&lt;u&gt;db_name&lt;/u&gt;&lt;br&gt;db_type (MySQL/MariaDB)&lt;br&gt;host&lt;br&gt;port&lt;br&gt;charset" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="80" y="330" width="190" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="erd-webdir" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;WEB_DIRECTORY&lt;/b&gt;&lt;u&gt;dir_path&lt;/u&gt;&lt;br&gt;owner&lt;br&gt;group_name&lt;br&gt;permissions&lt;br&gt;total_size" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="80" y="550" width="170" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="erd-job" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;BACKUP_JOB&lt;/b&gt;&lt;u&gt;job_id&lt;/u&gt;&lt;br&gt;triggered_by&lt;br&gt;start_time&lt;br&gt;end_time&lt;br&gt;duration_seconds&lt;br&gt;status (SUCCESS/FAILED)&lt;br&gt;error_message&lt;br&gt;retention_applied" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="440" y="80" width="210" height="195" as="geometry"/>
+        </mxCell>
+        <mxCell id="erd-file" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;BACKUP_FILE&lt;/b&gt;&lt;u&gt;filename&lt;/u&gt;&lt;br&gt;format (.tar.gz)&lt;br&gt;file_size&lt;br&gt;created_at&lt;br&gt;local_path&lt;br&gt;remote_path&lt;br&gt;is_uploaded&lt;br&gt;expires_at" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="440" y="370" width="180" height="195" as="geometry"/>
+        </mxCell>
+        <mxCell id="erd-cloud" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;CLOUD_REMOTE&lt;/b&gt;&lt;u&gt;remote_name&lt;/u&gt;&lt;br&gt;provider (GDrive/S3/R2)&lt;br&gt;target_folder&lt;br&gt;auth_type (OAuth/Key)&lt;br&gt;max_transfers" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="810" y="370" width="200" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="erd-notif" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;NOTIFICATION&lt;/b&gt;&lt;u&gt;notif_id&lt;/u&gt;&lt;br&gt;channel (Telegram)&lt;br&gt;bot_token&lt;br&gt;chat_id&lt;br&gt;timestamp&lt;br&gt;status_code&lt;br&gt;message_content" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="810" y="90" width="190" height="175" as="geometry"/>
+        </mxCell>
+        <mxCell id="erd-cron" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;CRON_SCHEDULE&lt;/b&gt;&lt;u&gt;schedule_id&lt;/u&gt;&lt;br&gt;cron_expression&lt;br&gt;script_path&lt;br&gt;lock_file_path&lt;br&gt;log_file_path&lt;br&gt;is_active" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="440" y="640" width="180" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="erd-retention" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;RETENTION_POLICY&lt;/b&gt;&lt;u&gt;policy_id&lt;/u&gt;&lt;br&gt;max_age_days&lt;br&gt;scope (local/remote/both)&lt;br&gt;last_executed&lt;br&gt;files_deleted_count" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="810" y="590" width="210" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="erd-cred" value="&lt;b style=&quot;border-bottom:1px solid #333;padding-bottom:4px;display:block;margin-bottom:6px;&quot;&gt;CREDENTIALS&lt;/b&gt;&lt;u&gt;cred_id&lt;/u&gt;&lt;br&gt;file_path (.my.cnf)&lt;br&gt;permissions (600)&lt;br&gt;db_user&lt;br&gt;db_host&lt;br&gt;owner (root)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;spacingRight=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="80" y="750" width="180" height="155" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1" value="HAS" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="125" y="268" width="70" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1a" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="erd-server" target="r1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1b" value="N" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="r1" target="erd-db" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2" value="HOSTS" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="125" y="490" width="70" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2a" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="erd-db" target="r2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2b" value="N" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="r2" target="erd-webdir" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3" value="CREATES" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="495" y="295" width="80" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3a" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="erd-job" target="r3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3b" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="r3" target="erd-file" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4" value="READS" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="305" y="320" width="70" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4a" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="erd-job" target="r4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4b" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="r4" target="erd-db" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5" value="UPLOADED&lt;br&gt;TO" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="680" y="415" width="85" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5a" value="N" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="erd-file" target="r5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5b" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="r5" target="erd-cloud" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6" value="SENDS" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="140" width="70" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6a" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="erd-job" target="r6" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r6b" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="r6" target="erd-notif" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r7" value="TRIGGERS" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="480" y="590" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="r7a" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="erd-cron" target="r7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r7b" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="r7" target="erd-job" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r8" value="APPLIED&lt;br&gt;TO" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="690" y="545" width="80" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r8a" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="erd-retention" target="r8" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r8b" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="r8" target="erd-file" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r9" value="USED&lt;br&gt;BY" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="305" y="720" width="70" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r9a" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="erd-cred" target="r9" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r9b" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" edge="1" source="r9" target="erd-job" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r10" value="RUNS" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="295" y="130" width="70" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r10a" value="1" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="erd-server" target="r10" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r10b" value="N" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=10;fontStyle=1;" edge="1" source="r10" target="erd-job" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

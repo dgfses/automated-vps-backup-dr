@@ -1,0 +1,31 @@
+# ==============================================================================
+# MYSQL/MARIADB CREDENTIAL FILE — Template
+# ==============================================================================
+# Lokasi deploy: /root/.my.cnf
+# Permission   : chmod 600 /root/.my.cnf (WAJIB!)
+#
+# PERINGATAN KEAMANAN:
+#   File ini berisi kredensial database dalam bentuk teks.
+#   JANGAN PERNAH commit file ini ke Git repository!
+#   Pastikan .gitignore sudah mengecualikan file ini.
+#
+# Cara deploy:
+#   1. Salin file ini ke /root/.my.cnf
+#   2. Edit dengan kredensial database yang benar
+#   3. Jalankan: chmod 600 /root/.my.cnf
+#
+# Mengapa ini penting?
+#   - Dengan file ini, mysqldump dan mysql tidak perlu parameter -p (password)
+#   - Password TIDAK akan terekspos di ps aux atau /proc
+#   - Standar keamanan produksi (Zero-Plaintext Authentication)
+# ==============================================================================
+
+[client]
+user=root
+password="GANTI_DENGAN_PASSWORD_DATABASE_ANDA"
+host=localhost
+
+[mysqldump]
+user=root
+password="GANTI_DENGAN_PASSWORD_DATABASE_ANDA"
+host=localhost

@@ -1,0 +1,43 @@
+# ==============================================================================
+# .gitignore — Cloud Backup & Disaster Recovery System
+# ==============================================================================
+# Mengamankan file sensitif & temporary agar tidak ter-commit ke repository.
+# ==============================================================================
+
+# ── Kredensial & Secrets ──────────────────────────────────────────────────────
+.my.cnf
+*.cnf
+!config/my.cnf.example
+.env
+*.key
+*.pem
+
+# ── File Backup (Bisa sangat besar) ──────────────────────────────────────────
+*.sql
+*.tar.gz
+*.tar.bz2
+*.zip
+*.gz
+
+# ── Direktori Temporary ──────────────────────────────────────────────────────
+backup_temp/
+recovery_temp/
+tmp/
+temp/
+
+# ── Log Files ────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── OS Files ─────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# ── IDE & Editor ─────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-*

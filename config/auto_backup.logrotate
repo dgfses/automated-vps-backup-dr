@@ -1,0 +1,25 @@
+# ==============================================================================
+# LOGROTATE CONFIGURATION — Cloud Backup & DR System
+# ==============================================================================
+# Lokasi deploy: /etc/logrotate.d/auto_backup
+#
+# Deskripsi:
+#   Mencegah file /var/log/backup.log membengkak hingga ber-gigabyte
+#   setelah berbulan-bulan sistem berjalan. Log akan otomatis dipotong
+#   setiap bulan, dikompres menjadi .gz, dan hanya menyimpan maksimal
+#   6 bulan riwayat log terakhir.
+#
+# Deploy:
+#   sudo cp config/auto_backup.logrotate /etc/logrotate.d/auto_backup
+#   sudo logrotate --debug /etc/logrotate.d/auto_backup  (test)
+# ==============================================================================
+
+/var/log/backup.log {
+    monthly
+    rotate 6
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 644 root root
+}
