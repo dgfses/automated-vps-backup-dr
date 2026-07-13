@@ -21,7 +21,7 @@ Proyek ini dibangun untuk menyelesaikan kedua masalah tersebut sekaligus. Bukan 
 
 ## Arsitektur Sistem
 
-Seluruh proses berjalan otomatis setiap malam pukul 02:00 WIB, saat trafik server sedang paling rendah. Diagram berikut menunjukkan alur data dari awal sampai akhir — mulai dari trigger cronjob, dump database, kompresi file, upload ke cloud, sampai notifikasi ke Telegram.
+Seluruh proses berjalan otomatis setiap malam pukul 02:00 WIB, saat trafik server sedang paling rendah. Diagram berikut menunjukkan alur data dari awal sampai akhir  mulai dari trigger cronjob, dump database, kompresi file, upload ke cloud, sampai notifikasi ke Telegram.
 
 
 ![Context Diagram - Cloud Backup & DR System](image/1.drawio.png)
