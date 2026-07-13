@@ -2,21 +2,21 @@
 
 # Automated Cloud Backup & Disaster Recovery
 
-Backup database & file web secara otomatis setiap malam, upload ke cloud storage, bersihkan file lama, kirim laporan ke Telegram — dan ketika server hancur, pulihkan semuanya dalam satu perintah.
+Backup database & file web secara otomatis setiap malam, upload ke cloud storage, bersihkan file lama, kirim laporan ke Telegram dan ketika server hancur, pulihkan semuanya dalam satu perintah.
 
 </div>
 
 Di dunia cloud hosting, ada satu prinsip yang sering diabaikan sampai semuanya sudah terlambat:
 
-> *"Backup yang tidak pernah diuji pemulihannya bukan backup — itu cuma harapan."*
+> *"Backup yang tidak pernah diuji pemulihannya bukan backup  itu cuma harapan."*
 
 Setiap hari, perusahaan hosting menghadapi dua ancaman yang sangat nyata:
 
-**Pertama, kehilangan data.** Server bisa down kapan saja — karena serangan ransomware, kesalahan konfigurasi, atau sekadar hardware yang sudah tua. Ketika itu terjadi, klien menuntut pemulihan dalam hitungan menit, bukan jam.
+**Pertama, kehilangan data.** Server bisa down kapan saja  karena serangan ransomware, kesalahan konfigurasi, atau sekadar hardware yang sudah tua. Ketika itu terjadi, klien menuntut pemulihan dalam hitungan menit, bukan jam.
 
-**Kedua, disk server penuh.** Ini lebih sering terjadi dari yang orang kira. File backup menumpuk di server yang sama tanpa ada mekanisme pembersihan. Lama-lama disk terisi 100%, database crash, dan website ikut tumbang — padahal bukan karena serangan, tapi karena kelalaian.
+**Kedua, disk server penuh.** Ini lebih sering terjadi dari yang orang kira. File backup menumpuk di server yang sama tanpa ada mekanisme pembersihan. Lama-lama disk terisi 100%, database crash, dan website ikut tumbang  padahal bukan karena serangan, tapi karena kelalaian.
 
-Proyek ini dibangun untuk menyelesaikan kedua masalah tersebut sekaligus. Bukan sekadar skrip backup biasa, tapi sistem automasi lengkap yang berjalan sendiri tanpa perlu disentuh manusia — dan ketika bencana benar-benar terjadi, ada mekanisme pemulihan yang sudah teruji dan bisa dijalankan dengan satu perintah.
+Proyek ini dibangun untuk menyelesaikan kedua masalah tersebut sekaligus. Bukan sekadar skrip backup biasa, tapi sistem automasi lengkap yang berjalan sendiri tanpa perlu disentuh manusia  dan ketika bencana benar-benar terjadi, ada mekanisme pemulihan yang sudah teruji dan bisa dijalankan dengan satu perintah.
 
 
 ## Arsitektur Sistem
@@ -32,7 +32,7 @@ Diagram di atas menunjukkan sistem sebagai satu kesatuan dan bagaimana ia berint
 
 ![System Architecture - Cloud Backup & DR](image/2.drawio.png)
 
-Diagram arsitektur ini menunjukkan tata letak fisik komponen di dalam server (VPS) dan bagaimana masing-masing terhubung ke layanan eksternal. Perhatikan bahwa `backup.sh` dan `restore.sh` adalah dua skrip independen — satu untuk operasi harian otomatis, satu lagi untuk skenario pemulihan darurat yang dijalankan manual oleh SysAdmin.
+Diagram arsitektur ini menunjukkan tata letak fisik komponen di dalam server (VPS) dan bagaimana masing-masing terhubung ke layanan eksternal. Perhatikan bahwa `backup.sh` dan `restore.sh` adalah dua skrip independen  satu untuk operasi harian otomatis, satu lagi untuk skenario pemulihan darurat yang dijalankan manual oleh SysAdmin.
 
 Jika backup kemarin belum selesai karena jaringan lambat atau data terlalu besar, **flock** secara otomatis membatalkan eksekusi hari ini — server tidak akan crash karena dua proses backup berjalan bersamaan.
 
@@ -93,7 +93,7 @@ Cleanup : 2 file lama dihapus
 Sistem berjalan otomatis tanpa interaksi manusia.
 ```
 
-Kalau backup gagal, notifikasi yang dikirim berbeda — langsung menyebutkan di tahap mana proses gagal dan apa penyebabnya, supaya SysAdmin bisa langsung investigate tanpa harus buka log dulu.
+Kalau backup gagal, notifikasi yang dikirim berbeda  langsung menyebutkan di tahap mana proses gagal dan apa penyebabnya, supaya SysAdmin bisa langsung investigate tanpa harus buka log dulu.
 
 ---
 
@@ -122,7 +122,7 @@ Hasilnya, password tidak pernah muncul di output `ps aux`, tidak tercatat di bas
 
 ### Concurrency Control dengan flock
 
-Bayangkan skenario ini: backup hari Senin butuh waktu 3 jam karena jaringan lambat. Pukul 02:00 Selasa, cronjob berikutnya mulai berjalan padahal yang kemarin belum selesai. Sekarang ada dua proses backup yang berjalan bersamaan — keduanya membaca database, menulis file besar, dan upload ke cloud secara paralel. Hasilnya: I/O disk melonjak 100%, CPU overload, dan server hang.
+Bayangkan skenario ini: backup hari Senin butuh waktu 3 jam karena jaringan lambat. Pukul 02:00 Selasa, cronjob berikutnya mulai berjalan padahal yang kemarin belum selesai. Sekarang ada dua proses backup yang berjalan bersamaan  keduanya membaca database, menulis file besar, dan upload ke cloud secara paralel. Hasilnya: I/O disk melonjak 100%, CPU overload, dan server hang.
 
 Solusinya sederhana tapi efektif — **flock** (file lock):
 
@@ -190,7 +190,7 @@ File log yang dibiarkan tanpa pengelolaan bisa tumbuh sampai ber-gigabyte setela
 
 ### Instalasi Otomatis
 
-Cara paling cepat — clone repo lalu jalankan setup wizard:
+Cara paling cepat  clone repo lalu jalankan setup wizard:
 
 ```bash
 # Clone dan masuk ke direktori
@@ -298,7 +298,7 @@ rclone lsd gdrive-backup:
 
 ## Simulasi Disaster Recovery
 
-Bagian ini adalah inti dari proyek ini. Bukan cuma bisa backup — tapi bisa membuktikan bahwa backup tersebut **benar-benar bisa dipakai** untuk memulihkan server yang hancur total.
+Bagian ini adalah inti dari proyek ini. Bukan cuma bisa backup tapi bisa membuktikan bahwa backup tersebut **benar-benar bisa dipakai** untuk memulihkan server yang hancur total.
 
 **Skenario:** Website klien tiba-tiba tidak bisa diakses. Setelah dicek, ternyata database terhapus dan sebagian file website corrupt akibat kesalahan update. Server perlu dipulihkan secepat mungkin.
 
@@ -360,7 +360,7 @@ Kalau ingin me-restore dari file backup tertentu (bukan yang terbaru):
 
 ### Metode 2: Manual Step-by-Step (Untuk Audit & Investigasi)
 
-Kadang kamu perlu kontrol penuh atas setiap tahap — misalnya saat menginvestigasi penyebab kerusakan atau melakukan audit data sebelum restore.
+Kadang kamu perlu kontrol penuh atas setiap tahap  misalnya saat menginvestigasi penyebab kerusakan atau melakukan audit data sebelum restore.
 
 ```bash
 # 1. Lihat daftar backup yang tersedia di cloud
